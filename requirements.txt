@@ -1,0 +1,6 @@
+picamera2
+ultralytics
+pyserial
+vl53l5cx-ctypes
+numpy
+pytest
