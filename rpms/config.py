@@ -8,7 +8,7 @@ FOLLOW_DIST_MM = 800
 STOP_DIST_MM   = 400
 
 # --- Serial ---
-SERIAL_PORT = '/dev/ttyACM0'
+SERIAL_PORT = '/dev/ttyACM1'
 BAUD        = 115200
 
 # --- Motor speed (PWM units, 0–255) ---
@@ -32,4 +32,4 @@ SPEED_DERIV_ALPHA = 0.3
 
 # --- Camera ---
 LENS_POSITION  = 0.67   # diopters; focus_distance_m = 1/LENS_POSITION ≈ 1.5m
-CONF_THRESHOLD = 0.50
+CONF_THRESHOLD = 0.30

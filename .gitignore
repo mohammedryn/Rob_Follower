@@ -7,3 +7,4 @@ dist/
 build/
 yolov8n_ncnn_model/
 demo_log.txt
+CLAUDE.md
