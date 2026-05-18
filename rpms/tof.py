@@ -5,6 +5,7 @@ from rpms.config import STOP_DIST_MM, FOLLOW_DIST_MM
 def init_tof():
     from vl53l5cx_ctypes import VL53L5CX
     tof = VL53L5CX()
+    tof.set_resolution(8 * 8)
     tof.start_ranging()
     return tof
 
