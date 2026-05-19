@@ -54,8 +54,8 @@ def main():
             speed = speed_pid.update(dist_mm - FOLLOW_DIST_MM)
             speed = float(np.clip(BASE_SPEED + speed, -BASE_SPEED, MAX_SPEED))
 
-            left  = int(max(-MAX_SPEED, min(MAX_SPEED, speed - steer)))
-            right = int(max(-MAX_SPEED, min(MAX_SPEED, speed + steer)))
+            left  = int(max(-MAX_SPEED, min(MAX_SPEED, speed + steer)))
+            right = int(max(-MAX_SPEED, min(MAX_SPEED, speed - steer)))
             send_motors(ser, left, right)
 
             fps = 1.0 / max(time.time() - t0, 1e-4)
