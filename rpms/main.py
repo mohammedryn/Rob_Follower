@@ -54,10 +54,12 @@ def main():
             speed = speed_pid.update(dist_mm - FOLLOW_DIST_MM)
             speed = float(np.clip(BASE_SPEED + speed, -BASE_SPEED, MAX_SPEED))
 
-            send_motors(ser, speed - steer, speed + steer)
+            left  = int(max(-MAX_SPEED, min(MAX_SPEED, speed - steer)))
+            right = int(max(-MAX_SPEED, min(MAX_SPEED, speed + steer)))
+            send_motors(ser, left, right)
 
             fps = 1.0 / max(time.time() - t0, 1e-4)
-            print(f"CX:{cx:4d}  DIST:{dist_mm:5d}mm  SPD:{speed:6.1f}  STR:{steer:6.1f}  FPS:{fps:4.1f}")
+            print(f"CX:{cx:4d}  DIST:{dist_mm:5d}mm  SPD:{speed:6.1f}  STR:{steer:6.1f}  L:{left:4d}  R:{right:4d}  FPS:{fps:4.1f}")
 
     except KeyboardInterrupt:
         print("\nStopping...")
