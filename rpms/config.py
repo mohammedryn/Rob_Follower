@@ -8,7 +8,7 @@ FOLLOW_DIST_MM = 800
 STOP_DIST_MM   = 400
 
 # --- Serial ---
-SERIAL_PORT = '/dev/ttyACM1'
+SERIAL_PORT = '/dev/ttyUSB0'
 BAUD        = 115200
 
 # --- Motor speed (PWM units, 0–255) ---
