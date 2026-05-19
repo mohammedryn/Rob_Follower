@@ -27,8 +27,7 @@ def get_depth_info(tof) -> tuple[int, bool]:
     center_valid = center_flat[center_flat > 0]
     min_center = int(np.min(center_valid)) if len(center_valid) > 0 else FOLLOW_DIST_MM
 
-    # Full-grid obstacle check (ignore 0 = invalid readings)
-    all_valid = grid[grid > 0]
-    obstacle = bool(np.any(all_valid < STOP_DIST_MM)) if len(all_valid) > 0 else False
+    # Obstacle check uses center zones only — outer zones see robot's own chassis
+    obstacle = bool(np.any(center_valid < STOP_DIST_MM)) if len(center_valid) > 0 else False
 
     return min_center, obstacle
