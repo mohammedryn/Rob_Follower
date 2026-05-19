@@ -3,7 +3,14 @@ from rpms.config import SERIAL_PORT, BAUD, MAX_SPEED
 
 
 def init_serial() -> serial.Serial:
-    return serial.Serial(SERIAL_PORT, BAUD, timeout=0.05)
+    ser = serial.Serial()
+    ser.port     = SERIAL_PORT
+    ser.baudrate = BAUD
+    ser.timeout  = 0.05
+    ser.dtr      = False   # prevent ESP32 auto-reset on connect
+    ser.rts      = False
+    ser.open()
+    return ser
 
 
 def send_motors(ser: serial.Serial, left: float, right: float) -> None:
